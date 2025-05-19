@@ -689,12 +689,10 @@ def main(args):
 
 
     ######BAYESIAN#####
-    # Define the search space for hyperparameters
-    #  Track start time for Bayesian Optimization
     bayesian_start_time = time.time()
 
     # We only optimize w1, w2, w3, and enforce w4 = 1 - (w1 + w2 + w3)
-    search_space = [Real(0, 1), Real(0, 1), Real(0, 1)]  # Only 3 variables
+    search_space = [Real(0, 1), Real(0, 1), Real(0, 1)] 
 
     def objective(params):
         """
@@ -710,7 +708,7 @@ def main(args):
         w4 = 1 - (w1 + w2 + w3)  # Ensures w1 + w2 + w3 + w4 = 1
 
 
-        print(f"\n🔹 [Bayesian] Training alignment model with w1={w1}, w2={w2}, w3={w3}, w4={w4}...")
+        print(f"\n [Bayesian] Training alignment model with w1={w1}, w2={w2}, w3={w3}, w4={w4}...")
 
         # **Train Alignment Model**
         alignment_model = train_alignment_model(S_train, T_train, input_dim, 256, 500, 0.001, w1, w2, w3, w4)
@@ -736,7 +734,7 @@ def main(args):
         # Step 4: Evaluate New Model on Link Prediction
         new_mrr = evaluate_model(new_trained_kge, test_triples)
 
-        print(f"🔹 [Bayesian] Model MRR={new_mrr}")
+        print(f" [Bayesian] Model MRR={new_mrr}")
 
         # **Return negative MRR for minimization**
         return -new_mrr  
@@ -784,7 +782,7 @@ def main(args):
     re_vocab_full = get_re_vocab(full_test_triples)
     final_metrics = evaluate_link_prediction_performance(final_bayesian_trained_kge, full_test_triples, er_vocab_full, re_vocab_full)
 
-    print(f"✅ Final Bayesian Model Performance on FULL test set:\n{final_metrics}")
+    print(f" Final Bayesian Model Performance on FULL test set:\n{final_metrics}")
 
 
     # **Compare and Save the Best Model (Same as Grid Search)**
@@ -800,16 +798,16 @@ def main(args):
         shutil.move(os.path.join(new_model_folder, "model.pt"), previous_model_path)
         print(f"Best model saved in {previous_model_folder} using Bayesian Optimization.")
     else:
-        print(f"🔹 Grid Search model (MRR={best_mrr}) is still the best. Keeping it.")
+        print(f" Grid Search model (MRR={best_mrr}) is still the best. Keeping it.")
 
     # **Final Results**
-    print(f"🔹 Best Grid Search Model MRR: {best_mrr}")
-    print(f"🔹 Best Bayesian Model MRR: {best_mrr_bayesian}")
+    print(f" Best Grid Search Model MRR: {best_mrr}")
+    print(f" Best Bayesian Model MRR: {best_mrr_bayesian}")
 
     #  Compute and print total Bayesian Optimization execution time
     bayesian_end_time = time.time()
     bayesian_duration = bayesian_end_time - bayesian_start_time
-    print(f"⏳ Bayesian Optimization took {bayesian_duration:.2f} seconds ({bayesian_duration / 60:.2f} minutes)")
+    print(f" Bayesian Optimization took {bayesian_duration:.2f} seconds ({bayesian_duration / 60:.2f} minutes)")
 
     # Save Best Parameters with full metrics
     best_params = {
@@ -827,7 +825,7 @@ def main(args):
     with open(os.path.join(previous_model_folder, "best_params.json"), "w") as f:
         json.dump(best_params, f, indent=4)
 
-    print(f"✅ Best parameters and scores saved in {previous_model_folder}/best_params.json")
+    print(f" Best parameters and scores saved in {previous_model_folder}/best_params.json")
 
 
 
