@@ -71,16 +71,16 @@ Each embedding folder must contain:
 
 ##  Example Usage
 ###  Step 1: Procrustes Alignment
-###  Step 2: NAAS Entity Alignment
-###  Step 3: NAAS Link Prediction
 ```bash
 python run_procrustes.py \
   --embedding_folder /path/to/embedding_folder \
   --alignment_dict_path /path/to/pre_aligned_alignment_dict \
   --alignmentlimes_dict_path /path/to/limes_alignment_dict \
-  --output_folder /path/to/output_folder
+  --output_folder /path/to/output_folder 
+  ```
 
-
+###  Step 2: NAAS Entity Alignment
+```bash
   python NAAS_entity_alignment.py \
   --source_dir /path/to/source_embeddings \
   --target_dir /path/to/target_embeddings \
@@ -88,12 +88,14 @@ python run_procrustes.py \
   --val_alignment_folder /path/to/val_alignment_links \
   --test_alignment_folder /path/to/test_alignment_links \
   --output_dir /path/to/save_results
+  ```
 
-
+###  Step 3: NAAS Link Prediction
+```bash
 python NAAS_link_prediction.py \
   --source_dir /path/to/source_embeddings \
   --target_dir /path/to/target_embeddings \
   --alignment_dir /path/to/procrustes_output \
   --test_triples /path/to/procrustes_output/new_model/test_triples.txt \
   --output_dir /path/to/save_results
-
+  ```
