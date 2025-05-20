@@ -99,3 +99,22 @@ python NAAS_LP.py \
   --test_triples /path/to/procrustes_output/new_model/test_triples.txt \
   --output_dir /path/to/save_results
   ```
+
+
+## Output Files and Folders
+
+After running the pipeline, the following outputs are created in the folder specified by `--output_dir` (e.g., `procrustes_results/DATASET_NAME`):
+
+output_dir/
+│
+├── new_model/
+│ └── model.pt # Latest NAAS model (overwritten each iteration)
+│
+├── previous_model/
+│ ├── model.pt # Best-performing model (based on MRR)
+│ └── best_params.json # Best loss weights (w1–w4) and final evaluation scores
+│
+├── aligned_embeddings/
+│ ├── merged_entity_embeddings.pt # Merged aligned entity embeddings
+│ └── merged_relation_embeddings.pt # Merged aligned relation embeddings
+
