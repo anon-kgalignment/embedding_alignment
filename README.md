@@ -103,8 +103,8 @@ python NAAS_LP.py \
 
 ## Output Files and Folders
 
-After running the pipeline, the following outputs are created in the folder specified by `--output_dir` (e.g., `procrustes_results/DATASET_NAME`):
-
+After running the pipeline, the following outputs are created in the folder specified by `--output_dir`:
+```
 output_dir/
 │
 ├── new_model/
@@ -117,4 +117,4 @@ output_dir/
 ├── aligned_embeddings/
 │ ├── merged_entity_embeddings.pt # Merged aligned entity embeddings
 │ └── merged_relation_embeddings.pt # Merged aligned relation embeddings
-
+```
