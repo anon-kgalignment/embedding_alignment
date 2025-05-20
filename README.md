@@ -70,7 +70,9 @@ Each embedding folder must contain:
 ---
 
 ##  Example Usage
-### 🔹 Step 1: Procrustes Alignment
+###  Step 1: Procrustes Alignment
+###  Step 2: NAAS Entity Alignment
+###  Step 3: NAAS Link Prediction
 ```bash
 python run_procrustes.py \
   --embedding_folder /path/to/embedding_folder \
