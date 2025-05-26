@@ -31,12 +31,22 @@ Each embedding folder must contain:
 
 ---
 
-##  Installation
+## Requirements
 
-1. Train your embeddings using [DICE](https://github.com/dice-group/dice-embeddings)
-2. Download or create alignment dictionaries
-3. Use this repo for post-hoc alignment via Procrustes or NAAS
+Install dependencies from the `requirements.txt` file:
 
+```bash
+pip install -r requirements.txt
+
+
+```md
+## Installation Steps
+
+1. Train your KGE embeddings using the [DICE Embedding Framework](https://github.com/dice-group/dice-embeddings)
+2. Download or create alignment dictionaries (e.g., from OpenEA or Zenodo)
+3. Use this repo for post-hoc alignment via:
+   - `run_procrustes.py` for linear Procrustes alignment
+   - `NAAS_entity_alignment.py` and `NAAS_link_prediction.py` for neural alignment and evaluation
 ---
 
 ##  Pipeline Overview
@@ -118,3 +128,9 @@ output_dir/
 │ ├── merged_entity_embeddings.pt # Merged aligned entity embeddings
 │ └── merged_relation_embeddings.pt # Merged aligned relation embeddings
 ```
+
+
+## Notes
+
+- The implementation is designed to be reproducible and follows the experimental setup described in the paper.
+-  If you encounter any issues or have questions, feel free to reach out via the repository.
