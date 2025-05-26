@@ -37,9 +37,8 @@ Install dependencies from the `requirements.txt` file:
 
 ```bash
 pip install -r requirements.txt
+```
 
-
-```md
 ## Installation Steps
 
 1. Train your KGE embeddings using the [DICE Embedding Framework](https://github.com/dice-group/dice-embeddings)
